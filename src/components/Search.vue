@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" v-if="countrySelected">
       <div class="col bottom">
         <template v-if="!loadingConfirmed">
           <span class="total total-confirmed">{{country.confirmed.count}}</span><br>
@@ -133,7 +133,7 @@
   }
 
   .total-confirmed {
-    color: yellow;
+    color: #ffcf40;
   }
 
   .total-death {

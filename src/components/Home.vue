@@ -84,11 +84,21 @@
               c.slug = country.Slug;
               this.countries.push(c);
             });
+            this.sort();
             this.loadingCountries = false;
           })
           .catch(error => {
             this.loadingCountries = false;
           })
+      },
+      sort() {
+        this.countries.sort(function (a, b) {
+          if (a.name > b.name)
+            return 1;
+          if (a.name < b.name)
+            return -1;
+          return 0;
+        });
       },
     },
     mounted() {
@@ -117,7 +127,7 @@
   }
 
   .total-confirmed {
-    color: yellow;
+    color: #ffcf40;
   }
 
   .total-death {
