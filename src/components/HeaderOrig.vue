@@ -43,7 +43,7 @@
     height: 5rem;
     padding: 20px;
     text-align: center;
-    background: #5d1184;
+    background: #271979;
     color: white;
     //text-transform: uppercase;
     font-size: 1rem;

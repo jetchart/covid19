@@ -79,6 +79,7 @@
         this.getConfirmed();
         this.getDeath();
         this.getRecovered();
+        //window.scrollTo(0, 0);
       },
       getConfirmed() {
         this.loadingConfirmed = true;

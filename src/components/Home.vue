@@ -2,7 +2,7 @@
   <div class="home container">
     <div class="row">
       <div class="col">
-        <h2>TOTAL AT WORLD</h2>
+        <h2>TOTAL WORLD</h2>
       </div>
     </div>
     <div class="row">
