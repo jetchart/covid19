@@ -5,6 +5,7 @@
     <div v-bind:class="{'content': getConnected, 'bg-light': getConnected}">
       <router-view></router-view>
     </div>
+    <footer-custom></footer-custom>
   </div>
 </template>
 
@@ -12,6 +13,7 @@
   import 'bootstrap/dist/css/bootstrap.css'
   import 'bootstrap-vue/dist/bootstrap-vue.css'
   import HeaderCustom from './components/HeaderOrig'
+  import FooterCustom from './components/Footer'
   import {mapGetters} from "vuex";
 
 export default {
@@ -24,11 +26,12 @@ export default {
       msg: 'Welcome to Your Vue.js App'
     }
   },
-  components: { HeaderCustom }
+  components: { HeaderCustom, FooterCustom }
 }
 </script>
 
 <style>
+
 #app {
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";;
   -webkit-font-smoothing: antialiased;
