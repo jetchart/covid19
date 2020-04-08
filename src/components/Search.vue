@@ -82,7 +82,7 @@
       },
       getConfirmed() {
         this.loadingConfirmed = true;
-        axios.get(`https://api.covid19api.com/country/${this.countrySelected}/status/confirmed`)
+        axios.get(`https://api.covid19api.com/total/dayone/country/${this.countrySelected}/status/confirmed`)
           .then(response => {
             const data = response.data[response.data.length - 1];
             this.country.confirmed.count = data.Cases;
@@ -95,7 +95,7 @@
       },
       getDeath() {
         this.loadingDeath = true;
-        axios.get(`https://api.covid19api.com/country/${this.countrySelected}/status/deaths`)
+        axios.get(`https://api.covid19api.com/total/dayone/country/${this.countrySelected}/status/deaths`)
           .then(response => {
             const data = response.data[response.data.length - 1];
             this.country.death.count = data.Cases;
@@ -108,7 +108,7 @@
       },
       getRecovered() {
         this.loadingRecovered = true;
-        axios.get(`https://api.covid19api.com/country/${this.countrySelected}/status/recovered`)
+        axios.get(`https://api.covid19api.com/total/dayone/country/${this.countrySelected}/status/recovered`)
           .then(response => {
             const data = response.data[response.data.length - 1];
             this.country.recovered.count = data.Cases;
