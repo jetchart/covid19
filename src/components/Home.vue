@@ -9,21 +9,21 @@
       <div class="col bottom">
         <template v-if="!loading">
           <span class="total total-confirmed">{{totals.confirmed}}</span><br>
-          <span class="description">TOTAL CONFIRMED</span>
+          <span class="description">CONFIRMED</span>
         </template>
         <b-spinner v-else variant="warning" style="width: 3rem; height: 3rem;"></b-spinner>
       </div>
       <div class="col bottom">
         <template v-if="!loading">
           <span class="total total-death">{{totals.death}}</span><br>
-          <span class="description">TOTAL DEATHS</span>
+          <span class="description">DEATHS</span>
         </template>
         <b-spinner v-else variant="danger" style="width: 3rem; height: 3rem;"></b-spinner>
       </div>
       <div class="col bottom">
         <template v-if="!loading">
           <span class="total total-recovered">{{totals.recovered}}</span><br>
-          <span class="description">TOTAL RECOVERED</span>
+          <span class="description">RECOVERED</span>
         </template>
         <b-spinner v-else variant="success" style="width: 3rem; height: 3rem;"></b-spinner>
       </div>
@@ -111,7 +111,7 @@
   }
 </script>
 
-<style>
+<style scoped>
 
   .bottom {
     margin-bottom: 1rem;
