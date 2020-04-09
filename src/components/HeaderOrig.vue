@@ -63,7 +63,7 @@
   .brand {
     position: relative;
     top: -20px;
-    left: 15px;
+    left: 10px;
   }
 
   .brand-image {
