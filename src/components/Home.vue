@@ -70,7 +70,7 @@
             this.totals.confirmed = data.Global.TotalConfirmed;
             this.totals.death = data.Global.TotalDeaths;
             this.totals.recovered = data.Global.TotalRecovered;
-            this.totals.date = data.Date.toString().substring(0, 10);
+            this.totals.date = this.formatDate(data.Date);
             this.loading = false;
           })
           .catch(error => {
@@ -104,6 +104,9 @@
           return 0;
         });
       },
+      formatDate(date) {
+        return date.substring(8,10) + "/" + date.substring(5,7) + "/" + date.substring(0,4);
+      }
     },
     mounted() {
       this.getSummary();

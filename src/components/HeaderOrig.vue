@@ -2,7 +2,7 @@
   <div class="header">
     <div class="row header-row">
       <div class="col" align="left">
-        <span class="brand">COVID19 Stats</span>
+        <span class="brand">COVID19 STATS</span>
       </div>
     </div>
   </div>
