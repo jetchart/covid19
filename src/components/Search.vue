@@ -16,7 +16,7 @@
       <div class="col bottom">
         <template v-if="!loadingConfirmed">
           <span class="total total-confirmed" v-b-tooltip.hover :title="(country.confirmed.count - country.confirmed.countBefore) + ' more than ' + country.confirmed.dateBefore">
-            {{country.confirmed.count}}
+            {{country.confirmed.count}}<b-icon class="elevation" font-scale="0.5" icon="exclamation-circle-fill" variant="secondary"></b-icon>
           </span>
           <br>
           <span class="description">CONFIRMED</span><br>
@@ -27,7 +27,7 @@
       <div class="col bottom">
         <template v-if="!loadingDeath">
           <span class="total total-death" v-b-tooltip.hover :title="(country.death.count - country.death.countBefore) + ' more than ' + country.death.dateBefore">
-            {{country.death.count}}
+            {{country.death.count}}<b-icon class="elevation" font-scale="0.5" icon="exclamation-circle-fill" variant="secondary"></b-icon>
           </span>
           <br>
           <span class="description">DEATHS</span><br>
@@ -38,7 +38,7 @@
       <div class="col bottom">
         <template v-if="!loadingRecovered">
           <span class="total total-recovered" v-b-tooltip.hover :title="(country.recovered.count - country.recovered.countBefore) + ' more than ' + country.recovered.dateBefore">
-            {{country.recovered.count}}
+            {{country.recovered.count}}<b-icon class="elevation" font-scale="0.5" icon="exclamation-circle-fill" variant="secondary"></b-icon>
           </span>
           <br>
           <span class="description">RECOVERED</span><br>
@@ -205,6 +205,11 @@
 
   h5 {
     font-weight: 700;
+  }
+
+  .elevation {
+    margin-bottom: 0.8rem;
+    margin-left: 0.2rem;
   }
 
 </style>
