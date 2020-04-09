@@ -2,7 +2,7 @@
   <div class="header">
         <span class="header-title">COVID19 STATS</span>
     <div class="brand" align="right">
-      <img src="../assets/coronavirus.png" height="60px" width="60px">
+      <img class="brand-image" src="../assets/coronavirus.png" height="60px" width="60px">
     </div>
   </div>
 </template>
@@ -64,6 +64,15 @@
     position: relative;
     top: -20px;
     left: 15px;
+  }
+
+  .brand-image {
+    animation-name: brand-animation;
+    animation: brand-animation 5s linear infinite;
+  }
+
+  @keyframes brand-animation {
+    to{ transform: rotate(360deg); }
   }
 
 </style>
