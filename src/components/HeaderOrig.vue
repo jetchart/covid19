@@ -1,8 +1,8 @@
 <template>
   <div class="header">
-        <span>COVID19 STATS</span>
+        <span class="header-title">COVID19 STATS</span>
     <div class="brand" align="right">
-      <img src="../assets/coronavirus.png" height="50px" width="50px">
+      <img src="../assets/coronavirus.png" height="60px" width="60px">
     </div>
   </div>
 </template>
@@ -38,6 +38,11 @@
 
 <style>
 
+  .header-title {
+    font-weight: 900;
+    font-size: 20px;
+  }
+
   .header {
     z-index: 999;
     height: 4rem;
@@ -55,21 +60,10 @@
     box-shadow: 0px -12px 14px 10px rgba(0,0,0,0.75);
   }
 
-  .no-connected {
-  }
-
-  .logo {
-    border-radius: 0.5em;
-  }
-
-  .header-row {
-    align-items: center;
-    vertical-align: middle;
-  }
-
   .brand {
     position: relative;
-    top: -10px;
+    top: -20px;
+    left: 15px;
   }
 
 </style>
