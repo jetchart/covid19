@@ -15,13 +15,12 @@
     <div class="row" v-if="countrySelected">
       <div class="col bottom">
         <template v-if="!loadingConfirmed">
-          <b-tooltip target="country-confirmed">{{country.confirmed.count - country.confirmed.countBefore}} more than {{country.confirmed.dateBefore}}</b-tooltip>
-          <div id="country-confirmed">
+          <b-tooltip ref="tooltipConfirmed" target="country-confirmed">{{country.confirmed.count - country.confirmed.countBefore}} more than {{country.confirmed.dateBefore}}</b-tooltip>
+          <div id="country-confirmed" @click="$refs.tooltipConfirmed.$emit('show')">
             <span class="total total-confirmed">
               {{country.confirmed.count}}<b-icon class="elevation" font-scale="0.5" icon="exclamation-circle-fill" variant="warning"></b-icon>
             </span>
           </div>
-          <br>
           <span class="description">CONFIRMED</span><br>
           <span class="date">({{country.confirmed.date}})</span>
         </template>
@@ -29,13 +28,12 @@
       </div>
       <div class="col bottom">
         <template v-if="!loadingDeath">
-          <b-tooltip target="country-death">{{country.death.count - country.death.countBefore}} more than {{country.death.dateBefore}}</b-tooltip>
-          <div id="country-death">
+          <b-tooltip ref="tooltipDeath" target="country-death">{{country.death.count - country.death.countBefore}} more than {{country.death.dateBefore}}</b-tooltip>
+          <div id="country-death" @click="$refs.tooltipDeath.$emit('show')">
             <span class="total total-death">
               {{country.death.count}}<b-icon class="elevation" font-scale="0.5" icon="exclamation-circle-fill" variant="danger"></b-icon>
             </span>
           </div>
-          <br>
           <span class="description">DEATHS</span><br>
           <span class="date">({{country.death.date}})</span>
         </template>
@@ -49,7 +47,6 @@
               {{country.recovered.count}}<b-icon class="elevation" font-scale="0.5" icon="exclamation-circle-fill" variant="success"></b-icon>
             </span>
           </div>
-          <br>
           <span class="description">RECOVERED</span><br>
           <span class="date">({{country.recovered.date}})</span>
         </template>
