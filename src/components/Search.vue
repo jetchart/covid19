@@ -179,8 +179,8 @@
 <style>
 
   .total {
-    font-weight: 700;
-    font-size: 30px;
+    font-weight: 800;
+    font-size: 25px;
   }
 
   .total-confirmed {
