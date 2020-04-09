@@ -43,8 +43,8 @@
       </div>
       <div class="col bottom">
         <template v-if="!loadingRecovered">
-          <b-tooltip target="country-recovered">{{country.recovered.count - country.recovered.countBefore}} more than {{country.recovered.dateBefore}}</b-tooltip>
-          <div id="country-recovered">
+          <b-tooltip ref="tooltipRecovered" target="country-recovered">{{country.recovered.count - country.recovered.countBefore}} more than {{country.recovered.dateBefore}}</b-tooltip>
+          <div id="country-recovered" @click="$refs.tooltipRecovered.$emit('show')">
             <span class="total total-recovered">
               {{country.recovered.count}}<b-icon class="elevation" font-scale="0.5" icon="exclamation-circle-fill" variant="success"></b-icon>
             </span>
