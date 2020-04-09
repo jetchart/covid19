@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <header-custom></header-custom>
-    <div v-bind:class="{'content': getConnected, 'bg-light': getConnected}">
+    <header-custom class="header-a"></header-custom>
+    <div class="content-body" v-bind:class="{'content': getConnected, 'bg-light': getConnected}">
       <router-view></router-view>
     </div>
     <footer-custom></footer-custom>
@@ -43,6 +43,10 @@ export default {
   border-radius: 15px;
 }
 
+.content-body {
+  padding-top: 4rem;
+}
+
 h1, h2 {
   font-weight: normal;
 }
@@ -70,6 +74,10 @@ a {
   -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.29);
   -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.29);
   box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.29);
+}
+
+.header-a {
+  position: fixed;
 }
 
 </style>

@@ -1,9 +1,8 @@
 <template>
   <div class="header">
-    <div class="row header-row">
-      <div class="col" align="left">
-        <span class="brand">COVID19 STATS</span>
-      </div>
+        <span>COVID19 STATS</span>
+    <div class="brand" align="right">
+      <img src="../assets/coronavirus.png" height="50px" width="50px">
     </div>
   </div>
 </template>
@@ -40,7 +39,9 @@
 <style>
 
   .header {
-    height: 5rem;
+    z-index: 999;
+    height: 4rem;
+    width: 100%;
     padding: 20px;
     text-align: center;
     background: #271979;
@@ -67,6 +68,8 @@
   }
 
   .brand {
+    position: relative;
+    top: -10px;
   }
 
 </style>
