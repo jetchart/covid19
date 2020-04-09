@@ -2,7 +2,9 @@
   <div class="footer">
     <div class="row header-row">
       <div class="col" align="right">
-        <span class="footer-desc">by JME</span>
+        <a href="https://www.linkedin.com/in/juan-martin-etchart-71a50b48" target="_blank">
+          <img src="../assets/linkedin.png" height="25px" width="25px" alt="">
+        </a>
       </div>
     </div>
   </div>
@@ -43,8 +45,8 @@
     height: 1.8rem;
     width: 100%;
     position: fixed;
-    bottom: 0;
-    padding-right: 0.2rem;
+    bottom: 5px;
+    padding-right: 0.3rem;
     text-align: center;
     color: black;
     //text-transform: uppercase;
@@ -56,11 +58,6 @@
   .header-row {
     align-items: center;
     vertical-align: middle;
-  }
-
-  .footer-desc {
-    font-size: 10px;
-    font-weight: 500;
   }
 
 </style>

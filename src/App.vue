@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <header-custom class="header-a"></header-custom>
+    <header-custom class="header-a header-t"></header-custom>
     <div class="content-body" v-bind:class="{'content': getConnected, 'bg-light': getConnected}">
       <router-view></router-view>
     </div>
-    <footer-custom></footer-custom>
+    <footer-custom class="opacity-t"></footer-custom>
   </div>
 </template>
 
@@ -78,6 +78,24 @@ a {
 
 .header-a {
   position: fixed;
+}
+
+.opacity-t {
+  animation: opacity-animation 1s linear;
+}
+
+@keyframes opacity-animation {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.header-t {
+   animation: header-animation 0.5s linear;
+ }
+
+@keyframes header-animation {
+  from { top: -50px; }
+  to { top: 0px; }
 }
 
 </style>
