@@ -15,22 +15,34 @@
     <div class="row" v-if="countrySelected">
       <div class="col bottom">
         <template v-if="!loadingConfirmed">
-          <span class="total total-confirmed">{{country.confirmed.count}}</span><br>
-          <span class="description">CONFIRMED</span>
+          <span class="total total-confirmed" v-b-tooltip.hover :title="(country.confirmed.count - country.confirmed.countBefore) + ' more than ' + country.confirmed.dateBefore">
+            {{country.confirmed.count}}
+          </span>
+          <br>
+          <span class="description">CONFIRMED</span><br>
+          <span class="date">({{country.confirmed.date}})</span>
         </template>
         <b-spinner v-else variant="warning"></b-spinner>
       </div>
       <div class="col bottom">
         <template v-if="!loadingDeath">
-          <span class="total total-death">{{country.death.count}}</span><br>
-          <span class="description">DEATHS</span>
+          <span class="total total-death" v-b-tooltip.hover :title="(country.death.count - country.death.countBefore) + ' more than ' + country.death.dateBefore">
+            {{country.death.count}}
+          </span>
+          <br>
+          <span class="description">DEATHS</span><br>
+          <span class="date">({{country.death.date}})</span>
         </template>
         <b-spinner v-else variant="danger"></b-spinner>
       </div>
       <div class="col bottom">
         <template v-if="!loadingRecovered">
-          <span class="total total-recovered">{{country.recovered.count}}</span><br>
-          <span class="description">RECOVERED</span>
+          <span class="total total-recovered" v-b-tooltip.hover :title="(country.recovered.count - country.recovered.countBefore) + ' more than ' + country.recovered.dateBefore">
+            {{country.recovered.count}}
+          </span>
+          <br>
+          <span class="description">RECOVERED</span><br>
+          <span class="date">({{country.recovered.date}})</span>
         </template>
         <b-spinner v-else variant="success"></b-spinner>
       </div>
@@ -79,7 +91,6 @@
         this.getConfirmed();
         this.getDeath();
         this.getRecovered();
-        //window.scrollTo(0, 0);
       },
       getConfirmed() {
         this.loadingConfirmed = true;
@@ -87,7 +98,8 @@
           .then(response => {
             const data = response.data[response.data.length - 1];
             this.country.confirmed.count = data.Cases;
-            this.country.confirmed.date = data.Date;
+            this.country.confirmed.date = data.Date.toString().substring(0, 10);
+            this.getDiferenceConfirmed(response.data);
             this.loadingConfirmed = false;
           })
           .catch(error => {
@@ -100,7 +112,8 @@
           .then(response => {
             const data = response.data[response.data.length - 1];
             this.country.death.count = data.Cases;
-            this.country.death.date = data.Date;
+            this.country.death.date = data.Date.toString().substring(0, 10);
+            this.getDiferenceDeaths(response.data);
             this.loadingDeath = false;
           })
           .catch(error => {
@@ -113,12 +126,40 @@
           .then(response => {
             const data = response.data[response.data.length - 1];
             this.country.recovered.count = data.Cases;
-            this.country.recovered.date = data.Date;
+            this.country.recovered.date = data.Date.toString().substring(0, 10);
+            this.getDiferenceRecovered(response.data);
             this.loadingRecovered = false;
           })
           .catch(error => {
             this.loadingRecovered = false;
           })
+      },
+      getDiferenceConfirmed(data) {
+        let before = null;
+        if (data.length > 1)
+          before = data[data.length - 2];
+        else
+          before = data[data.length - 1];
+        this.country.confirmed.countBefore = before.Cases;
+        this.country.confirmed.dateBefore = before.Date.toString().substring(0, 10);
+      },
+      getDiferenceDeaths(data) {
+        let before = null;
+        if (data.length > 1)
+          before = data[data.length - 2];
+        else
+          before = data[data.length - 1];
+        this.country.death.countBefore = before.Cases;
+        this.country.death.dateBefore = before.Date.toString().substring(0, 10);
+      },
+      getDiferenceRecovered(data) {
+        let before = null;
+        if (data.length > 1)
+          before = data[data.length - 2];
+        else
+          before = data[data.length - 1];
+        this.country.recovered.countBefore = before.Cases;
+        this.country.recovered.dateBefore = before.Date.toString().substring(0, 10);
       },
     },
     watch: {
@@ -129,7 +170,7 @@
 <style>
 
   .total {
-    font-weight: 500;
+    font-weight: 700;
     font-size: 30px;
   }
 
@@ -146,12 +187,21 @@
   }
 
   .description {
-    font-weight: 500;
+    font-weight: 700;
     font-size: 10px;
   }
 
   .bottom {
     margin-bottom: 1rem;
+  }
+
+  .date {
+    font-weight: 400;
+    font-size: 9px;
+  }
+
+  h5 {
+    font-weight: 700;
   }
 
 </style>

@@ -9,21 +9,24 @@
       <div class="col bottom">
         <template v-if="!loading">
           <span class="total total-confirmed">{{totals.confirmed}}</span><br>
-          <span class="description">CONFIRMED</span>
+          <span class="description">CONFIRMED</span><br>
+          <span class="date">({{totals.date}})</span>
         </template>
         <b-spinner v-else variant="warning" style="width: 3rem; height: 3rem;"></b-spinner>
       </div>
       <div class="col bottom">
         <template v-if="!loading">
           <span class="total total-death">{{totals.death}}</span><br>
-          <span class="description">DEATHS</span>
+          <span class="description">DEATHS</span><br>
+          <span class="date">({{totals.date}})</span>
         </template>
         <b-spinner v-else variant="danger" style="width: 3rem; height: 3rem;"></b-spinner>
       </div>
       <div class="col bottom">
         <template v-if="!loading">
           <span class="total total-recovered">{{totals.recovered}}</span><br>
-          <span class="description">RECOVERED</span>
+          <span class="description">RECOVERED</span><br>
+          <span class="date">({{totals.date}})</span>
         </template>
         <b-spinner v-else variant="success" style="width: 3rem; height: 3rem;"></b-spinner>
       </div>
@@ -67,6 +70,7 @@
             this.totals.confirmed = data.Global.TotalConfirmed;
             this.totals.death = data.Global.TotalDeaths;
             this.totals.recovered = data.Global.TotalRecovered;
+            this.totals.date = data.Date.toString().substring(0, 10);
             this.loading = false;
           })
           .catch(error => {
@@ -142,4 +146,14 @@
     font-weight: 700;
     font-size: 15px;
   }
+
+  h2 {
+    font-weight: 700;
+  }
+
+  .date {
+    font-weight: 400;
+    font-size: 9px;
+  }
+
 </style>
