@@ -15,9 +15,12 @@
     <div class="row" v-if="countrySelected">
       <div class="col bottom">
         <template v-if="!loadingConfirmed">
-          <span class="total total-confirmed" v-b-tooltip.hover :title="(country.confirmed.count - country.confirmed.countBefore) + ' more than ' + country.confirmed.dateBefore">
-            {{country.confirmed.count}}<b-icon class="elevation" font-scale="0.5" icon="exclamation-circle-fill" variant="warning"></b-icon>
-          </span>
+          <b-tooltip target="country-confirmed">{{country.confirmed.count - country.confirmed.countBefore}} more than {{country.confirmed.dateBefore}}</b-tooltip>
+          <div id="country-confirmed">
+            <span class="total total-confirmed">
+              {{country.confirmed.count}}<b-icon class="elevation" font-scale="0.5" icon="exclamation-circle-fill" variant="warning"></b-icon>
+            </span>
+          </div>
           <br>
           <span class="description">CONFIRMED</span><br>
           <span class="date">({{country.confirmed.date}})</span>
@@ -26,9 +29,12 @@
       </div>
       <div class="col bottom">
         <template v-if="!loadingDeath">
-          <span class="total total-death" v-b-tooltip.hover :title="(country.death.count - country.death.countBefore) + ' more than ' + country.death.dateBefore">
-            {{country.death.count}}<b-icon class="elevation" font-scale="0.5" icon="exclamation-circle-fill" variant="danger"></b-icon>
-          </span>
+          <b-tooltip target="country-death">{{country.death.count - country.death.countBefore}} more than {{country.death.dateBefore}}</b-tooltip>
+          <div id="country-death">
+            <span class="total total-death">
+              {{country.death.count}}<b-icon class="elevation" font-scale="0.5" icon="exclamation-circle-fill" variant="danger"></b-icon>
+            </span>
+          </div>
           <br>
           <span class="description">DEATHS</span><br>
           <span class="date">({{country.death.date}})</span>
@@ -37,9 +43,12 @@
       </div>
       <div class="col bottom">
         <template v-if="!loadingRecovered">
-          <span class="total total-recovered" v-b-tooltip.hover :title="(country.recovered.count - country.recovered.countBefore) + ' more than ' + country.recovered.dateBefore">
-            {{country.recovered.count}}<b-icon class="elevation" font-scale="0.5" icon="exclamation-circle-fill" variant="success"></b-icon>
-          </span>
+          <b-tooltip target="country-recovered">{{country.recovered.count - country.recovered.countBefore}} more than {{country.recovered.dateBefore}}</b-tooltip>
+          <div id="country-recovered">
+            <span class="total total-recovered">
+              {{country.recovered.count}}<b-icon class="elevation" font-scale="0.5" icon="exclamation-circle-fill" variant="success"></b-icon>
+            </span>
+          </div>
           <br>
           <span class="description">RECOVERED</span><br>
           <span class="date">({{country.recovered.date}})</span>
