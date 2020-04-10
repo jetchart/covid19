@@ -81,7 +81,7 @@ a {
 }
 
 .opacity-t {
-  animation: opacity-animation 1s linear;
+  animation: opacity-animation 2s linear;
 }
 
 @keyframes opacity-animation {
