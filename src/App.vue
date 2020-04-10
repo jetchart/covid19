@@ -94,8 +94,8 @@ a {
  }
 
 @keyframes header-animation {
-  from { top: -50px; }
-  to { top: 0px; }
+  from { top: -100px; }
+  to { top: 0; }
 }
 
 </style>
