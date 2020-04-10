@@ -75,7 +75,8 @@
             this.totals.confirmed = data.Global.TotalConfirmed;
             this.totals.death = data.Global.TotalDeaths;
             this.totals.recovered = data.Global.TotalRecovered;
-            this.totals.date = this.formatDate(data.Date);
+            console.log(new Date(data.Date).toLocaleDateString());
+            this.totals.date = new Date(data.Date).toLocaleDateString();
             this.loading = false;
           })
           .catch(error => {

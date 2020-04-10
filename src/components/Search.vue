@@ -109,7 +109,7 @@
           .then(response => {
             const data = response.data[response.data.length - 1];
             this.country.confirmed.count = data.Cases;
-            this.country.confirmed.date = this.formatDate(data.Date);
+            this.country.confirmed.date = new Date(data.Date).toLocaleDateString();
             this.getDiferenceConfirmed(response.data);
             this.loadingConfirmed = false;
           })
@@ -124,7 +124,7 @@
           .then(response => {
             const data = response.data[response.data.length - 1];
             this.country.death.count = data.Cases;
-            this.country.death.date = this.formatDate(data.Date);
+            this.country.death.date = new Date(data.Date).toLocaleDateString();
             this.getDiferenceDeaths(response.data);
             this.loadingDeath = false;
           })
@@ -139,7 +139,7 @@
           .then(response => {
             const data = response.data[response.data.length - 1];
             this.country.recovered.count = data.Cases;
-            this.country.recovered.date = this.formatDate(data.Date);
+            this.country.recovered.date = new Date(data.Date).toLocaleDateString();
             this.getDiferenceRecovered(response.data);
             this.loadingRecovered = false;
           })
