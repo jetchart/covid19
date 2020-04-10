@@ -1,6 +1,7 @@
 <template>
   <div class="header">
-        <span class="header-title">COVID19 STATS</span>
+    <!--<a href="http://www.google.com" target="_blank"><img align="left" src="../assets/www5.png" height="30px" width="30px"></a>-->
+    <span class="header-title">COVID19 STATS</span>
     <div class="brand" align="right">
       <img class="brand-image" src="../assets/coronavirus.png" height="60px" width="60px">
     </div>
@@ -64,6 +65,10 @@
     position: relative;
     top: -20px;
     left: 10px;
+  }
+
+  .www {
+    cursor: pointer;
   }
 
   .brand-image {

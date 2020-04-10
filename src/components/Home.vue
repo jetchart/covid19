@@ -1,5 +1,8 @@
 <template>
   <div class="home container">
+    <b-alert :show="dismissCountDown" dismissible variant="danger" @dismissed="dismissCountDown=0" @dismiss-count-down="countDownChanged">
+      ¡Ups! An error occurred while retrieving the information, please try again later
+    </b-alert>
     <div class="row">
       <div class="col">
         <h2>TOTAL WORLD</h2>
@@ -48,6 +51,8 @@
     name: 'Home',
     data () {
       return {
+        dismissSecs: 5,
+        dismissCountDown: 0,
         loading: false,
         loadingCountries: true,
         countries: [],
@@ -74,6 +79,7 @@
             this.loading = false;
           })
           .catch(error => {
+            this.showAlert();
             this.loading = false;
           })
       },
@@ -92,6 +98,7 @@
             this.loadingCountries = false;
           })
           .catch(error => {
+            this.showAlert();
             this.loadingCountries = false;
           })
       },
@@ -106,6 +113,12 @@
       },
       formatDate(date) {
         return date.substring(8,10) + "/" + date.substring(5,7) + "/" + date.substring(0,4);
+      },
+      countDownChanged(dismissCountDown) {
+        this.dismissCountDown = dismissCountDown
+      },
+      showAlert() {
+        this.dismissCountDown = this.dismissSecs
       }
     },
     mounted() {
