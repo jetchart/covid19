@@ -21,6 +21,9 @@ export default {
   computed: {
     ...mapGetters([ 'getConnected', ])
   },
+  mounted() {
+    window.scrollTo(0,0);
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
