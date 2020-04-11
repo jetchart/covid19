@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <div class="row" v-if="countrySelected">
+    <div class="row" v-if="countrySelected && hasData">
       <div class="col bottom">
         <template v-if="!loadingConfirmed">
           <b-tooltip ref="tooltipConfirmed" target="country-confirmed">{{country.confirmed.count - country.confirmed.countBefore}} more than {{country.confirmed.dateBefore}}</b-tooltip>
@@ -56,6 +56,11 @@
         <b-spinner v-else variant="success"></b-spinner>
       </div>
     </div>
+    <div class="row" v-if="countrySelected && !hasData">
+      <div class="col bottom">
+        <small>No data for this country</small>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -74,6 +79,7 @@
         loadingConfirmed: false,
         loadingDeath: false,
         loadingRecovered: false,
+        hasData: false,
         countrySelected: null,
         country: {
           confirmed: {
@@ -99,6 +105,7 @@
       showData() {
         if (!this.countrySelected)
           return;
+        this.hasData = true;
         this.getConfirmed();
         this.getDeath();
         this.getRecovered();
@@ -107,6 +114,10 @@
         this.loadingConfirmed = true;
         axios.get(`https://api.covid19api.com/total/dayone/country/${this.countrySelected}/status/confirmed`)
           .then(response => {
+            if (response.data.length === 0) {
+              this.hasData = false;
+              return;
+            }
             const data = response.data[response.data.length - 1];
             this.country.confirmed.count = data.Cases;
             this.country.confirmed.date = this.formatDate(data.Date);
@@ -122,6 +133,10 @@
         this.loadingDeath = true;
         axios.get(`https://api.covid19api.com/total/dayone/country/${this.countrySelected}/status/deaths`)
           .then(response => {
+            if (response.data.length === 0) {
+              this.hasData = false;
+              return;
+            }
             const data = response.data[response.data.length - 1];
             this.country.death.count = data.Cases;
             this.country.death.date = this.formatDate(data.Date);
@@ -137,6 +152,10 @@
         this.loadingRecovered = true;
         axios.get(`https://api.covid19api.com/total/dayone/country/${this.countrySelected}/status/recovered`)
           .then(response => {
+            if (response.data.length === 0) {
+              this.hasData = false;
+              return;
+            }
             const data = response.data[response.data.length - 1];
             this.country.recovered.count = data.Cases;
             this.country.recovered.date = this.formatDate(data.Date);
