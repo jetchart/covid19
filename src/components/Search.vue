@@ -155,7 +155,7 @@
         else
           before = data[data.length - 1];
         this.country.confirmed.countBefore = before.Cases;
-        this.country.confirmed.dateBefore = this.formatDate(before.Date);
+        this.country.confirmed.dateBefore = new Date(before.Date).toLocaleString();
       },
       getDiferenceDeaths(data) {
         let before = null;
@@ -164,7 +164,7 @@
         else
           before = data[data.length - 1];
         this.country.death.countBefore = before.Cases;
-        this.country.death.dateBefore = this.formatDate(before.Date);
+        this.country.death.dateBefore = new Date(before.Date).toLocaleString();
       },
       getDiferenceRecovered(data) {
         let before = null;
@@ -173,7 +173,7 @@
         else
           before = data[data.length - 1];
         this.country.recovered.countBefore = before.Cases;
-        this.country.recovered.dateBefore = this.formatDate(before.Date);
+        this.country.recovered.dateBefore = new Date(before.Date).toLocaleString();
       },
       formatDate(date) {
         return date.substring(8,10) + "/" + date.substring(5,7) + "/" + date.substring(0,4);
